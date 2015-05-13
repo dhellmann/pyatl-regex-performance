@@ -16,7 +16,7 @@ print('payload has %d bytes' % len(input_str))
 
 times = []
 
-for pattern in strutils._SANITIZE_PATTERNS_2:
+for pattern in strutils._SANITIZE_PATTERNS_2['admin_pass']:
     print('\ntesting %s' % pattern.pattern)
     t = timeit.Timer(
         "re.sub(pattern, r'\g<1>***\g<2>', payload)",
