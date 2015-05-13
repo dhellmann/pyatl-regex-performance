@@ -16,14 +16,15 @@ _SANITIZE_PATTERNS_1 = []
 # NOTE(amrith): Some regular expressions have only one parameter, some
 # have two parameters. Use different lists of patterns here.
 _FORMAT_PATTERNS_1 = [r'(%(key)s\s*[=]\s*)[^\s^\'^\"]+']
-_FORMAT_PATTERNS_2 = [r'(%(key)s\s*[=]\s*[\"\']).*?([\"\'])',
-                      r'(%(key)s\s+[\"\']).*?([\"\'])',
+_FORMAT_PATTERNS_2 = [r'(%(key)s\s*[=]\s*[\"\'])[^\"\']*([\"\'])',
+                      r'(%(key)s\s+[\"\'])[^\"\']*([\"\'])',
                       r'([-]{2}%(key)s\s+)[^\'^\"^=^\s]+([\s]*)',
-                      r'(<%(key)s>).*?(</%(key)s>)',
-                      r'([\"\']%(key)s[\"\']\s*:\s*[\"\']).*?([\"\'])',
-                      r'([\'"].*?%(key)s[\'"]\s*:\s*u?[\'"]).*?([\'"])',
-                      r'([\'"].*?%(key)s[\'"]\s*,\s*\'--?[A-z]+\'\s*,\s*u?'
-                      '[\'"]).*?([\'"])',
+                      r'(<%(key)s>)[^<]*(</%(key)s>)',
+                      r'([\"\']%(key)s[\"\']\s*:\s*[\"\'])[^\"\']*([\"\'])',
+                      r'([\'"][^"\']*%(key)s[\'"]\s*:\s*u?[\'"])[^\"\']*'
+                      '([\'"])',
+                      r'([\'"][^\'"]*%(key)s[\'"]\s*,\s*\'--?[A-z]+\'\s*,\s*u?'
+                      '[\'"])[^\"\']*([\'"])',
                       r'(%(key)s\s*--?[A-z]+\s*)\S+(\s*)']
 
 for key in _SANITIZE_KEYS:
